@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sary González — Travel Consultant</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F7F3EC;--surface:#EDE6D8;--card:#FDFAF5;--terra:#B85C38;--terra2:#D4784F;--forest:#2B3A2E;--gold:#C9A84C;--ink:#1C1C1A;--muted:#7A7268;--light:#A8A09A;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(247,243,236,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(184,92,56,0.1);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 3rem;height:64px;display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.nav-brand{display:flex;align-items:center;gap:0.6rem;flex-shrink:0;}
+.nav-dot{width:7px;height:7px;background:var(--terra);border-radius:50%;}
+.nav-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;letter-spacing:0.04em;white-space:nowrap;}
+.nav-links{display:flex;align-items:center;gap:0;}
+.nav-links a{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:0.5rem 1rem;transition:color 0.2s;white-space:nowrap;border-right:1px solid rgba(184,92,56,0.1);}
+.nav-links a:first-child{border-left:1px solid rgba(184,92,56,0.1);}
+.nav-links a:hover{color:var(--terra);}
+.nav-cta{background:var(--terra);color:white;padding:0.5rem 1.25rem;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;flex-shrink:0;white-space:nowrap;}
+.nav-cta:hover{background:var(--terra2);}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:55% 45%;padding-top:64px;}
+.hero-content{padding:7rem 4rem 5rem;display:flex;flex-direction:column;justify-content:center;position:relative;}
+.hero-content::after{content:'';position:absolute;right:0;top:15%;bottom:15%;width:1px;background:linear-gradient(to bottom,transparent,var(--terra),transparent);opacity:0.25;}
+.eyebrow{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--terra);margin-bottom:1.75rem;display:flex;align-items:center;gap:1rem;}
+.eyebrow::before{content:'';width:2.5rem;height:1px;background:var(--terra);}
+h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,5.5vw,4.5rem);line-height:1.06;margin-bottom:2rem;}
+h1 em{font-style:italic;color:var(--terra);}
+.hero-desc{font-size:0.97rem;line-height:1.85;color:var(--muted);max-width:440px;margin-bottom:2.75rem;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-fill{background:var(--terra);color:white;padding:0.85rem 2rem;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;display:inline-block;}
+.btn-fill:hover{background:var(--terra2);}
+.btn-ghost{border:1px solid var(--ink);color:var(--ink);padding:0.85rem 2rem;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;display:inline-block;}
+.btn-ghost:hover{background:var(--ink);color:var(--bg);}
+.hero-visual{background:var(--forest);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;}
+.hv-glow{position:absolute;inset:0;background-image:radial-gradient(circle at 30% 40%,rgba(201,168,76,0.07) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(184,92,56,0.1) 0%,transparent 50%);}
+.hv-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,0.025) 60px,rgba(255,255,255,0.025) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,0.025) 60px,rgba(255,255,255,0.025) 61px);}
+.hv-panel{position:relative;z-index:1;padding:3rem;}
+.big-n{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:7rem;line-height:1;color:rgba(255,255,255,0.04);position:absolute;top:2rem;right:2rem;}
+.dest-label{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:1.25rem;}
+.dest-chips{display:flex;flex-wrap:wrap;gap:0.45rem;margin-bottom:3rem;}
+.dc{font-size:0.73rem;color:rgba(255,255,255,0.68);border:1px solid rgba(255,255,255,0.1);padding:0.3rem 0.85rem;letter-spacing:0.03em;}
+.dc.hl{border-color:var(--gold);color:var(--gold);}
+.stats-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.05);}
+.stat-box{background:rgba(255,255,255,0.025);padding:1.5rem;}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:white;font-weight:300;line-height:1;}
+.stat-l{font-size:0.68rem;color:rgba(255,255,255,0.32);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.4rem;}
+
+/* SECTIONS */
+section{padding:7rem 4rem;}
+.stag{font-size:0.66rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--terra);margin-bottom:0.75rem;}
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;line-height:1.2;}
+h2 em{font-style:italic;color:var(--terra);}
+.bar{width:2.5rem;height:2px;background:var(--terra);margin:1.25rem 0 3rem;}
+
+/* SERVICES */
+.svc-list{display:flex;flex-direction:column;gap:2px;}
+.svc-row{display:grid;grid-template-columns:80px 1fr auto;align-items:start;gap:2.5rem;background:var(--card);padding:2.5rem;border-left:2px solid transparent;transition:border-color 0.2s,background 0.2s;}
+.svc-row:hover{border-left-color:var(--terra);background:var(--surface);}
+.s-num{font-family:'Cormorant Garamond',serif;font-size:3.5rem;color:var(--surface);line-height:1;font-weight:300;transition:color 0.2s;}
+.svc-row:hover .s-num{color:rgba(184,92,56,0.12);}
+.s-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;margin-bottom:0.6rem;}
+.s-desc{font-size:0.87rem;line-height:1.8;color:var(--muted);margin-bottom:1rem;max-width:560px;}
+.s-tags{display:flex;flex-wrap:wrap;gap:0.45rem;}
+.s-tag{font-size:0.66rem;letter-spacing:0.06em;background:var(--surface);color:var(--muted);padding:0.2rem 0.65rem;}
+.s-price{text-align:right;white-space:nowrap;font-family:'Cormorant Garamond',serif;}
+.pfrom{font-size:0.63rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--light);display:block;margin-bottom:0.2rem;}
+.pnum{font-size:1.8rem;color:var(--terra);font-weight:300;}
+.punit{font-size:0.78rem;color:var(--muted);}
+
+/* TRIPS */
+.trips-bg{background:var(--forest);padding:7rem 4rem;}
+.trips-bg .stag{color:var(--gold);}
+.trips-bg .bar{background:var(--gold);}
+.trips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.tc{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.07);padding:2rem;position:relative;transition:background 0.2s,border-color 0.2s;cursor:pointer;}
+.tc:hover{background:rgba(255,255,255,0.065);border-color:rgba(201,168,76,0.3);}
+.tc-badge{position:absolute;top:1.25rem;right:1.25rem;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;background:rgba(201,168,76,0.1);color:var(--gold);padding:0.2rem 0.6rem;border:1px solid rgba(201,168,76,0.18);}
+.tc-icon{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:0.9rem;}
+.tc-type{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,168,76,0.7);margin-bottom:0.5rem;}
+.tc-title{font-family:'Cormorant Garamond',serif;font-size:1.08rem;color:white;line-height:1.3;margin-bottom:0.75rem;font-weight:400;}
+.tc-quote{font-size:0.78rem;color:rgba(255,255,255,0.42);line-height:1.65;margin-bottom:1.25rem;font-style:italic;border-left:2px solid rgba(201,168,76,0.35);padding-left:0.75rem;}
+.tc-meta{display:flex;gap:1.25rem;flex-wrap:wrap;}
+.tc-d{font-size:0.66rem;color:rgba(255,255,255,0.28);letter-spacing:0.05em;}
+.tc-d strong{color:rgba(255,255,255,0.6);display:block;font-size:0.76rem;font-weight:400;margin-bottom:0.1rem;}
+.tc-detail{display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.07);}
+.tc.open .tc-detail{display:block;}
+.tc-detail ul{list-style:none;display:flex;flex-direction:column;gap:0.32rem;}
+.tc-detail li{font-size:0.74rem;color:rgba(255,255,255,0.47);display:flex;gap:0.5rem;line-height:1.5;}
+.tc-detail li::before{content:'—';color:var(--gold);flex-shrink:0;}
+.tc-hint{font-size:0.62rem;color:rgba(255,255,255,0.25);margin-top:1rem;text-align:right;letter-spacing:0.06em;}
+
+/* PROOF */
+.proof-bg{background:var(--surface);padding:7rem 4rem;}
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.pc{background:var(--card);padding:2rem;border-top:2px solid var(--terra);}
+.pc-label{font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--terra);margin-bottom:0.5rem;}
+.pc-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;margin-bottom:0.75rem;}
+.pc-desc{font-size:0.82rem;color:var(--muted);line-height:1.7;}
+.pc-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--terra);font-weight:300;margin-top:0.75rem;}
+
+/* PROCESS */
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.step{position:relative;padding:2rem 1.5rem;background:var(--card);}
+.step::before{content:'';position:absolute;top:50%;left:100%;width:1.5rem;height:1px;background:var(--terra);opacity:0.25;}
+.step:last-child::before{display:none;}
+.sn{font-family:'Cormorant Garamond',serif;font-size:3rem;color:rgba(184,92,56,0.08);line-height:1;margin-bottom:1.25rem;font-weight:300;}
+.st{font-family:'Cormorant Garamond',serif;font-size:1.1rem;margin-bottom:0.5rem;}
+.sd{font-size:0.82rem;color:var(--muted);line-height:1.65;}
+.stime{font-size:0.63rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--terra);margin-top:1rem;}
+
+/* ABOUT */
+.about-bg{padding:7rem 4rem;background:var(--card);}
+.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:6rem;align-items:center;}
+.about-text p{font-size:0.92rem;line-height:1.85;color:var(--muted);margin-bottom:1.25rem;}
+.about-text p strong{color:var(--ink);font-weight:500;}
+.creds{margin-top:2.5rem;display:flex;flex-direction:column;}
+.cred-row{display:flex;align-items:flex-start;gap:1.25rem;padding:1rem 0;border-bottom:1px solid var(--surface);}
+.cbullet{width:7px;height:7px;background:var(--terra);border-radius:50%;flex-shrink:0;margin-top:0.4rem;}
+.ctitle{font-size:0.87rem;font-weight:500;margin-bottom:0.2rem;}
+.csub{font-size:0.78rem;color:var(--muted);line-height:1.5;}
+.hl-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--surface);}
+.hl-box{background:var(--bg);padding:2rem;text-align:center;}
+.hl-n{font-family:'Cormorant Garamond',serif;font-size:3.5rem;color:var(--terra);font-weight:300;line-height:1;}
+.hl-l{font-size:0.68rem;color:var(--muted);margin-top:0.4rem;line-height:1.5;text-transform:uppercase;letter-spacing:0.06em;}
+
+/* REVIEWS */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.rc{border-top:2px solid var(--terra);padding:2rem;background:var(--card);}
+.rc-stars{color:var(--gold);font-size:0.68rem;letter-spacing:0.1em;margin-bottom:1.25rem;}
+.rc-q{font-family:'Cormorant Garamond',serif;font-size:1.03rem;line-height:1.65;margin-bottom:1.5rem;font-style:italic;color:var(--ink);}
+.rc-by{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--light);}
+.rc-p{font-size:0.66rem;color:var(--terra);margin-top:0.2rem;}
+
+/* CTA */
+.cta-bg{background:var(--terra);padding:6rem 4rem;text-align:center;}
+.cta-bg h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,4vw,4rem);font-weight:300;color:white;margin-bottom:1rem;line-height:1.1;}
+.cta-bg p{font-size:0.97rem;color:rgba(255,255,255,0.72);margin-bottom:0.5rem;}
+.cta-email{font-size:0.85rem;color:rgba(255,255,255,0.9);margin-bottom:2.5rem;font-weight:400;letter-spacing:0.04em;}
+.cta-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
+.bw{background:white;color:var(--terra);padding:0.85rem 2.25rem;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:opacity 0.2s;}
+.bw:hover{opacity:0.9;}
+.bow{border:1px solid rgba(255,255,255,0.45);color:white;padding:0.85rem 2.25rem;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;}
+.bow:hover{background:rgba(255,255,255,0.1);}
+
+footer{background:var(--forest);padding:1.75rem 4rem;display:flex;justify-content:space-between;align-items:center;}
+footer p{font-size:0.7rem;color:rgba(255,255,255,0.22);letter-spacing:0.06em;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <div class="nav-dot"></div>
+      <div class="nav-name">Sary González &nbsp;·&nbsp; Travel Consultant</div>
+    </div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#trips">My Trips</a>
+      <a href="#proof">Proof</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+    </div>
+    <a href="#contact" class="nav-cta">Book a free call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">Independent Travel Consultant &nbsp;·&nbsp; 16 Real Destinations</div>
+    <h1>Your trip, planned<br>by someone who<br><em>actually went.</em></h1>
+    <p class="hero-desc">Colombian travel consultant with detailed, hour-by-hour itineraries across 16 real destinations — from watching the Haleakalā sunrise at 3am in Maui, to camping in Kauai, to ascending an active volcano overnight in Guatemala. Every plan I deliver is built from something I actually did.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-fill">View services &amp; pricing</a>
+      <a href="#trips" class="btn-ghost">See my trips</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hv-glow"></div>
+    <div class="hv-lines"></div>
+    <div class="big-n">16</div>
+    <div class="hv-panel">
+      <div class="dest-label">Destinations planned &amp; personally traveled</div>
+      <div class="dest-chips">
+        <span class="dc hl">Hawaii — 3 islands</span>
+        <span class="dc hl">Alaska — Fairbanks</span>
+        <span class="dc hl">West Coast + National Parks</span>
+        <span class="dc">NYC + D.C. + Boston</span>
+        <span class="dc">Chicago</span>
+        <span class="dc">Guatemala</span>
+        <span class="dc">Puerto Rico</span>
+        <span class="dc">Nashville</span>
+        <span class="dc">Miami + Key West</span>
+        <span class="dc">Cancún + Tulum</span>
+        <span class="dc">Colombia</span>
+        <span class="dc">+ more</span>
+      </div>
+      <div class="stats-row">
+        <div class="stat-box"><div class="stat-n">16+</div><div class="stat-l">Destinations<br>lived & planned</div></div>
+        <div class="stat-box"><div class="stat-n">72h</div><div class="stat-l">Average<br>delivery time</div></div>
+        <div class="stat-box"><div class="stat-n">$0</div><div class="stat-l">First<br>consultation</div></div>
+        <div class="stat-box"><div class="stat-n">ES/EN</div><div class="stat-l">Bilingual<br>service</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="stag">What I offer</div>
+  <h2>Three services,<br><em>all built from real experience.</em></h2>
+  <div class="bar"></div>
+  <div class="svc-list">
+
+    <div class="svc-row">
+      <div class="s-num">01</div>
+      <div>
+        <div class="s-title">Custom Day-by-Day Travel Itinerary</div>
+        <div class="s-desc">Hour-by-hour plans built on firsthand experience — not copy-pasted from travel blogs. I include verified transport costs, honest assessments of which attractions are worth the time and money, local dining recommendations, and contingency notes for when things don't go as planned. You receive a document ready to use from the moment you land.</div>
+        <div class="s-tags"><span class="s-tag">Hour-by-hour schedule</span><span class="s-tag">Full budget breakdown</span><span class="s-tag">Accommodation picks</span><span class="s-tag">Local dining</span><span class="s-tag">Transport logistics</span><span class="s-tag">1 revision included</span></div>
+      </div>
+      <div class="s-price"><span class="pfrom">Starting at</span><span class="pnum">$35</span><span class="punit"> USD</span></div>
+    </div>
+
+    <div class="svc-row">
+      <div class="s-num">02</div>
+      <div>
+        <div class="s-title">Master's in Europe Planning — Latin American Students</div>
+        <div class="s-desc">Specialized guidance for Colombian and Latin American students pursuing fully-funded master's programs in Europe. I researched seven countries — Germany, the Netherlands, France, Norway, Czech Republic, Hungary, and Finland — covering scholarship systems, visa requirements, cost of living, and work-during-study regulations from a Colombian applicant's perspective. You get a clear roadmap in 72 hours instead of spending months researching alone.</div>
+        <div class="s-tags"><span class="s-tag">University shortlist by profile</span><span class="s-tag">Scholarship roadmap</span><span class="s-tag">Visa & application timeline</span><span class="s-tag">Cost-of-living by city</span><span class="s-tag">Work permit guide</span></div>
+      </div>
+      <div class="s-price"><span class="pfrom">Starting at</span><span class="pnum">$55</span><span class="punit"> USD</span></div>
+    </div>
+
+    <div class="svc-row">
+      <div class="s-num">03</div>
+      <div>
+        <div class="s-title">Budget Travel Consulting — USA, Latin America &amp; Caribbean</div>
+        <div class="s-desc">For travelers who want to maximize experience without overspending. I have completed the West Coast and four National Parks in 13 days for $2,514 all-in, covered New York, Washington D.C., and Boston in nine days under $1,400 including flights, and traveled Hawaii across three islands using campsite permits. I understand budget travel from a Latin American perspective — including how to navigate U.S. logistics for the first time.</div>
+        <div class="s-tags"><span class="s-tag">Optimized route planning</span><span class="s-tag">Hostel & camping picks</span><span class="s-tag">Flight cost strategy</span><span class="s-tag">Real budget breakdown</span><span class="s-tag">Latam traveler perspective</span></div>
+      </div>
+      <div class="s-price"><span class="pfrom">Starting at</span><span class="pnum">$30</span><span class="punit"> USD</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TRIPS -->
+<section class="trips-bg" id="trips">
+  <div class="stag">Portfolio — click any trip to expand</div>
+  <h2 style="color:white;">Every itinerary I offer<br><em style="color:var(--gold);">I have personally lived.</em></h2>
+  <div class="bar" style="background:var(--gold);"></div>
+  <div class="trips-grid">
+
+    <div class="tc" onclick="toggle(this)">
+      <div class="tc-badge">Park permits on file</div>
+      <div class="tc-icon">🌺</div>
+      <div class="tc-type">Multi-Island · USA · August 2025</div>
+      <div class="tc-title">Hawaii — Maui, Oahu &amp; Kauai / 6 Days Solo</div>
+      <div class="tc-quote">"3:00 AM — Haleakalā summit. The crater fills with cloud at sunrise, then breaks open. At 10,023 feet, this is the most surreal moment I have experienced while traveling. Reservations required weeks in advance."</div>
+      <div class="tc-meta">
+        <div class="tc-d"><strong>6 days</strong>Aug 2025</div>
+        <div class="tc-d"><strong>3 islands</strong>Maui · Oahu · Kauai</div>
+        <div class="tc-d"><strong>~$1,500</strong>Total</div>
+      </div>
+      <div class="tc-detail"><ul>
+        <li>Road to Hana — hour-by-hour route with verified stops</li>
+        <li>Overnight camping at Wai'anapanapa State Park — Black Sand Beach</li>
+        <li>Haleakalā sunrise at 3:00 AM + Pipiwai Trail (400-foot waterfall)</li>
+        <li>Kaihalulu Red Sand Beach — hidden location, exact coordinates included</li>
+        <li>Oahu: Makapu'u Point tide pools, Ho'omaluhia Botanical Garden, North Shore</li>
+        <li>Kauai: Waimea Canyon, Nā Pali Coast, Queen's Bath, helicopter tour</li>
+        <li>Camping permits: Salt Pond Beach Park + Anahola Beach — how to book before they sell out</li>
+      </ul><div class="tc-hint">Click to close</div></div>
+    </div>
+
+    <div class="tc" onclick="toggle(this)">
+      <div class="tc-badge">Full budget documented</div>
+      <div class="tc-icon">🌲</div>
+      <div class="tc-type">Road Trip · USA West Coast · March 2025</div>
+      <div class="tc-title">West Coast + National Parks — 13 Days / $2,514</div>
+      <div class="tc-quote">"5:00 AM — Drive toward Mather Point, Grand Canyon. The canyon begins to light up at 5:30. No travel article captures what it actually looks like in person. Arriving this early changes everything."</div>
+      <div class="tc-meta">
+        <div class="tc-d"><strong>13 days</strong>Mar 2025</div>
+        <div class="tc-d"><strong>$2,514</strong>Full breakdown</div>
+        <div class="tc-d"><strong>Self-drive</strong>Road trip</div>
+      </div>
+      <div class="tc-detail"><ul>
+        <li>Las Vegas → Seven Magic Mountains → Kaibab Forest campsite</li>
+        <li>Grand Canyon (Mather Point, 5:30 AM) → Horseshoe Bend → Lake Powell</li>
+        <li>The Wave + Lower Antelope Canyon guided tour → Zion sunset trail</li>
+        <li>San Diego: Old Town, India Street, Sunset Cliffs, Balboa Park</li>
+        <li>Dana Point → Laguna Beach → Newport Beach → Los Angeles → Malibu → Point Dume</li>
+        <li>Santa Barbara → Big Sur → San Francisco → Point Reyes National Seashore</li>
+        <li>Yosemite — 2 days: El Capitan, Bridalveil Fall, Glacier Point, Sentinel Dome, Taft Point</li>
+        <li>Sequoia National Park: General Sherman Tree + descent route</li>
+        <li>Verified costs: flights $313 · rental cars $731 · camping &amp; hotels $450 · food $450 · park fees $300 · rideshare $150 · gas $120</li>
+      </ul><div class="tc-hint">Click to close</div></div>
+    </div>
+
+    <div class="tc" onclick="toggle(this)">
+      <div class="tc-badge">Lived this</div>
+      <div class="tc-icon">🌋</div>
+      <div class="tc-type">Adventure · Central America · March 2025</div>
+      <div class="tc-title">Guatemala — Antigua, Acatenango &amp; Lake Atitlán / 5 Days</div>
+      <div class="tc-quote">"March 22 — overnight ascent of Acatenango volcano. March 23 — descend and take the shuttle directly to Lake Atitlán. This is the kind of back-to-back experience that stays with you."</div>
+      <div class="tc-meta">
+        <div class="tc-d"><strong>5 days</strong>Mar 2025</div>
+        <div class="tc-d"><strong>Budget</strong>Hostels + shuttles</div>
+        <div class="tc-d"><strong>Colombia → Guatemala</strong></div>
+      </div>
+      <div class="tc-detail"><ul>
+        <li>Antigua: recommended hostels — Tropicana, Adra, Maya Papaya, Central Hostel</li>
+        <li>Overnight ascent of Volcán Acatenango — guide contact and cost breakdown included</li>
+        <li>Private shuttle: Airport → Panajachel (verified contact, fixed rate)</li>
+        <li>Lake Atitlán: San Pedro, San Marcos, Casa del Mundo, Santa Cruz by boat</li>
+        <li>Town-hopping by public lancha — schedule and pricing included</li>
+        <li>Return route: shuttle to Guatemala City → flight to Barranquilla ($167)</li>
+      </ul><div class="tc-hint">Click to close</div></div>
+    </div>
+
+    <div class="tc" onclick="toggle(this)">
+      <div class="tc-badge">Lived this</div>
+      <div class="tc-icon">🗽</div>
+      <div class="tc-type">City Tour · East Coast USA · December 2024</div>
+      <div class="tc-title">NYC + Washington D.C. + Boston — 9 Days / New Year's</div>
+      <div class="tc-quote">"December 24 — The Metropolitan Museum, Central Park, the Saks Fifth Avenue light display, and Rockefeller Center — all in one evening, planned to the hour. This is the kind of itinerary that makes a city memorable."</div>
+      <div class="tc-meta">
+        <div class="tc-d"><strong>9 days</strong>Dec 24 – Jan 1</div>
+        <div class="tc-d"><strong>4 cities</strong>NYC · D.C. · Boston</div>
+        <div class="tc-d"><strong>NYE</strong>Times Square</div>
+      </div>
+      <div class="tc-detail"><ul>
+        <li>NYC: The Metropolitan Museum, Central Park, Empire State Building, The Edge at Hudson Yards</li>
+        <li>Brooklyn Bridge at 6:00 AM, Dumbo rooftop, Manhattan Bridge, Battery Park</li>
+        <li>Cornelia Street, Friends building, Bryant Park Holiday Market, Times Square NYE</li>
+        <li>Little Italy, Chinatown (Doyers Street), High Line, Little Island</li>
+        <li>Washington D.C.: U.S. Capitol, Library of Congress, National Mall — Lincoln, Jefferson, Washington, WWII Memorials</li>
+        <li>Boston: Harvard, Boston Public Library, Freedom Trail, Beacon Hill (Acorn Street), Quincy Market</li>
+        <li>Nightlife guide: curated recommendations for each city included separately</li>
+      </ul><div class="tc-hint">Click to close</div></div>
+    </div>
+
+    <div class="tc" onclick="toggle(this)">
+      <div class="tc-badge">Lived this</div>
+      <div class="tc-icon">❄️</div>
+      <div class="tc-type">Winter · Alaska · November 2024</div>
+      <div class="tc-title">Fairbanks, Alaska — Northern Lights &amp; Arctic Wilderness</div>
+      <div class="tc-quote">"Sunrise: 9:30 AM. Sunset: 3:30 PM. Only six hours of daylight. The Northern Lights are most visible between 11 PM and 2 AM. Chena Hot Springs during the day is essential to manage the cold — this is not something travel blogs explain clearly."</div>
+      <div class="tc-meta">
+        <div class="tc-d"><strong>5 days</strong>Nov 15–20</div>
+        <div class="tc-d"><strong>$425</strong>Round-trip flights</div>
+        <div class="tc-d"><strong>Arctic</strong>Sub-zero conditions</div>
+      </div>
+      <div class="tc-detail"><ul>
+        <li>Chena Hot Springs — timing strategy around aurora viewing windows</li>
+        <li>Castner Glacier Ice Cave — access route and conditions</li>
+        <li>Dog sledding, snowboarding, and snowmobile experiences with vetted providers</li>
+        <li>Aurora Borealis Ice Museum — worth the entry fee, confirmed</li>
+        <li>North Pole, Alaska — the actual city, 20 minutes from Fairbanks</li>
+        <li>Flight route: Newark → Las Vegas ($82) → Seattle ($22) → Fairbanks ($98) = $198 outbound</li>
+        <li>Recommended accommodation: The Farmhouse Airbnb — $160/night, 4.95 stars, 150 reviews</li>
+      </ul><div class="tc-hint">Click to close</div></div>
+    </div>
+
+    <div class="tc" onclick="toggle(this)">
+      <div class="tc-badge">Lived this</div>
+      <div class="tc-icon">🏙️</div>
+      <div class="tc-type">City Break · Midwest USA · September 2024</div>
+      <div class="tc-title">Chicago — 4 Days: Architecture, Culture &amp; Food</div>
+      <div class="tc-quote">"The Ventra App unlimited transit card costs $15 and opens the entire city. Skydeck and the 360° Chicago observation deck serve different views — I visited both and can tell you which one to prioritize."</div>
+      <div class="tc-meta">
+        <div class="tc-d"><strong>4 days</strong>Sep 22–25, 2024</div>
+        <div class="tc-d"><strong>Budget</strong>Hostel + $15 transit pass</div>
+        <div class="tc-d"><strong>Food-focused</strong></div>
+      </div>
+      <div class="tc-detail"><ul>
+        <li>Skydeck Willis Tower ($52) vs. 360° Chicago ($35) — honest comparison</li>
+        <li>Shoreline River Cruise ($34) — book the 9:00 AM departure for the best light</li>
+        <li>Field Museum ($35, 9 AM–4 PM) + Museum of Contemporary Art ($22)</li>
+        <li>Giordano's deep-dish pizza ($25) + Portillo's lunch + Chicago Pizza and Oven Grinder</li>
+        <li>Nutella Café + The Hot Dog Box + Teatro Chicago</li>
+        <li>Millennium Park (Cloud Gate), Chicago Riverwalk, Navy Pier, Chinatown</li>
+        <li>Ventra App transit card ($15) — how to get it and use it from day one</li>
+      </ul><div class="tc-hint">Click to close</div></div>
+    </div>
+
+    <div class="tc" onclick="toggle(this)">
+      <div class="tc-badge">Lived this</div>
+      <div class="tc-icon">🏝️</div>
+      <div class="tc-type">Caribbean · November 2024</div>
+      <div class="tc-title">Puerto Rico — San Juan &amp; Culebra / 3 Days</div>
+      <div class="tc-quote">"The 5:30 AM ferry to Culebra sells out. Flamenco Beach is one of the most remarkable beaches in the Caribbean — the kind that makes you understand why people plan entire trips around a single stretch of water."</div>
+      <div class="tc-meta">
+        <div class="tc-d"><strong>3 days</strong>Nov 21–23</div>
+        <div class="tc-d"><strong>Hotel</strong>Royal Sonesta</div>
+        <div class="tc-d"><strong>Highlights</strong>Culebra + Old San Juan</div>
+      </div>
+      <div class="tc-detail"><ul>
+        <li>Castillo San Felipe del Morro + full Old San Juan walking route</li>
+        <li>Cafetería Mallorca — the classic San Juan breakfast, worth the wait</li>
+        <li>Barrachina — the original piña colada, invented here in 1963</li>
+        <li>La Factoría — recognized among the best bars in Latin America</li>
+        <li>Culebra day trip: early ferry, Flamenco Beach, Icacos Island snorkeling</li>
+        <li>La Placita de Santurce — evening food and culture scene</li>
+      </ul><div class="tc-hint">Click to close</div></div>
+    </div>
+
+    <div class="tc" onclick="toggle(this)">
+      <div class="tc-badge">Lived this</div>
+      <div class="tc-icon">🎵</div>
+      <div class="tc-type">Weekend Trip · Tennessee · October 2024</div>
+      <div class="tc-title">Nashville — 3 Days: Music, Dining &amp; Local Shopping</div>
+      <div class="tc-quote">"I arrived Friday morning and had covered brunch, custom hat shopping, boot stores, a live music venue, and Broadway bars — all before 10 PM. Nashville rewards a structured itinerary more than almost any city I have visited."</div>
+      <div class="tc-meta">
+        <div class="tc-d"><strong>3 days</strong>Oct 31 – Nov 2</div>
+        <div class="tc-d"><strong>Complete guide</strong>Shopping + food + music</div>
+        <div class="tc-d"><strong>Weekend</strong></div>
+      </div>
+      <div class="tc-detail"><ul>
+        <li>Boot shopping guide: Boot Barn, Boot Factory Outlet, Opry Boot Shop, Belly Boots</li>
+        <li>Custom hat makers: Foster Hat Co., Hat Works, Planet Cowboy, Flea Style Hat Bar</li>
+        <li>Live music venues: Morgan Wallen's, Kid Rock's, Jason Aldean's, Jelly Rolls</li>
+        <li>Rooftop bars: Friends in Low Places, Tall Tales Rooftop</li>
+        <li>Brunch: White Limozine, Babo, Parseum</li>
+        <li>12th South neighborhood shopping + Nashville Vintage Market</li>
+        <li>Cheekwood Estate &amp; Gardens — worth adding on the final morning</li>
+      </ul><div class="tc-hint">Click to close</div></div>
+    </div>
+
+    <div class="tc" onclick="toggle(this)">
+      <div class="tc-badge">Planned &amp; executed</div>
+      <div class="tc-icon">🌊</div>
+      <div class="tc-type">Beach + Culture · Mexico</div>
+      <div class="tc-title">Cancún + Tulum + Chichén Itzá — 6 Days</div>
+      <div class="tc-quote">"Day 2: Isla Mujeres catamaran, all-inclusive, $60 per person — the most efficient way to see the island. Day 3: Chichén Itzá tour plus cenotes. Day 4: Playa del Carmen en route to Tulum. Every transition planned to avoid tourist traps."</div>
+      <div class="tc-meta">
+        <div class="tc-d"><strong>6 days</strong>Executed</div>
+        <div class="tc-d"><strong>~$640/person</strong>Total</div>
+        <div class="tc-d"><strong>Cancún → Tulum</strong>Route</div>
+      </div>
+      <div class="tc-detail"><ul>
+        <li>Cancún Day 1: Playa del Lunes + Playa Gaviota — the free beaches locals actually use</li>
+        <li>Isla Mujeres catamaran all-inclusive ($60/person) — book at least 3 days ahead</li>
+        <li>Chichén Itzá + cenotes combo tour ($90 total) + 5th Avenue, Playa del Carmen</li>
+        <li>Tulum: Zona Arqueológica de Tulum + Playa Paraíso + Gran Cenote</li>
+        <li>Rental car (6 days, $68) vs. ADO bus — when each makes sense</li>
+        <li>Airbnb: Cancún ($70/2 nights) + Tulum ($70/2 nights)</li>
+      </ul><div class="tc-hint">Click to close</div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof-bg" id="proof">
+  <div class="stag">Verified credentials</div>
+  <h2>Not stock photos.<br><em>Real documentation.</em></h2>
+  <div class="bar"></div>
+  <div class="proof-grid">
+    <div class="pc">
+      <div class="pc-label">Official Park Pass</div>
+      <div class="pc-title">Haleakalā National Park — August 2025</div>
+      <div class="pc-desc">I hold the official recreation.gov vehicle entrance pass for Haleakalā National Park in my name (Sary González Cortés), August 11–13, 2025. The 3:00 AM sunrise requires a separate timed-entry reservation — a detail many travelers miss until it is too late.</div>
+    </div>
+    <div class="pc">
+      <div class="pc-label">3 Official Camping Permits</div>
+      <div class="pc-title">Wai'anapanapa · Salt Pond Beach · Anahola — Hawaii</div>
+      <div class="pc-desc">Three state-issued camping permits across Maui and Kauai, all in my name, secured for the same trip. Each requires advance booking through different state systems — I know exactly when they open and how to secure the site you want before they sell out.</div>
+    </div>
+    <div class="pc">
+      <div class="pc-label">Documented Real Budget</div>
+      <div class="pc-title">West Coast + National Parks — Every Dollar Tracked</div>
+      <div class="pc-desc">Flights $313 · Rental cars $731 · Hotels &amp; camping $450 · Food $450 · Park entry fees $300 · Rideshare $150 · Gas $120. These are verified figures from a completed 13-day trip in March 2025 — not estimates.</div>
+      <div class="pc-num">$2,514</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" style="background:var(--bg);">
+  <div class="stag">How it works</div>
+  <h2>Four steps from concept<br><em>to itinerary in your hands.</em></h2>
+  <div class="bar"></div>
+  <div class="process-steps">
+    <div class="step"><div class="sn">01</div><div class="st">Share your trip details</div><div class="sd">Destination, travel dates, budget, and travel style. A short brief that takes under five minutes.</div><div class="stime">5 minutes</div></div>
+    <div class="step"><div class="sn">02</div><div class="st">I research and build</div><div class="sd">Personal experience combined with current research. Every itinerary is built specifically for you — no templates.</div><div class="stime">24–48 hours</div></div>
+    <div class="step"><div class="sn">03</div><div class="st">Review and adjust</div><div class="sd">You read it, ask questions, and request changes. One full round of revisions is included with every order.</div><div class="stime">1 revision</div></div>
+    <div class="step"><div class="sn">04</div><div class="st">Travel with confidence</div><div class="sd">Your final itinerary is practical, organized, and ready to follow from the moment you arrive.</div><div class="stime">Ready to go</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-bg" id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="stag">About me</div>
+      <h2>Sary González.<br><em>Traveler first, consultant second.</em></h2>
+      <div class="bar"></div>
+      <p>I am a Colombian professional from Barranquilla who has been planning and executing detailed trips long before it became a service. <strong>Every itinerary in my portfolio is one I personally completed.</strong> The budget figures are real. The recommendations come from experience — including things that went wrong, and what I learned from them.</p>
+      <p>My background in <strong>digital marketing and data analysis</strong> — four years at Serfinanza Bank, working with Google Analytics, operational systems, and campaign management — means I approach itinerary planning with the same discipline I applied to professional work: organized, realistic, and built on verified information.</p>
+      <p>I have camped at three separate parks across Hawaii in a single trip, reached the Haleakalā summit at 3:00 AM, ascended an active volcano overnight in Guatemala, and traveled Alaska in sub-zero winter conditions. <strong>When I plan your trip, that accumulated experience is in every page of your itinerary.</strong></p>
+      <div class="creds">
+        <div class="cred-row"><div class="cbullet"></div><div><div class="ctitle">16+ Destinations personally planned and traveled</div><div class="csub">Hawaii (3 islands), Alaska, West Coast + National Parks, NYC + D.C. + Boston, Chicago, Guatemala, Puerto Rico, Nashville, Miami, Cancún + Tulum, Colombia, and more</div></div></div>
+        <div class="cred-row"><div class="cbullet"></div><div><div class="ctitle">Au Pair Program — United States</div><div class="csub">Cross-cultural living, childcare management, and firsthand navigation of U.S. daily life, transport, and travel logistics</div></div></div>
+        <div class="cred-row"><div class="cbullet"></div><div><div class="ctitle">Digital Innovation &amp; Operations Analyst — Serfinanza Bank, Colombia</div><div class="csub">4+ years: Google Analytics, Excel, data analysis, digital marketing campaigns</div></div></div>
+        <div class="cred-row"><div class="cbullet"></div><div><div class="ctitle">Independent Research — Fully Funded Master's Programs in Europe</div><div class="csub">Researched 7 countries from a Colombian applicant's perspective: Germany, Netherlands, France, Norway, Czech Republic, Hungary, Finland</div></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="hl-grid">
+        <div class="hl-box"><div class="hl-n">16+</div><div class="hl-l">Destinations<br>lived &amp; planned</div></div>
+        <div class="hl-box"><div class="hl-n">72h</div><div class="hl-l">Avg. delivery<br>time</div></div>
+        <div class="hl-box"><div class="hl-n">ES/EN</div><div class="hl-l">Bilingual<br>service</div></div>
+        <div class="hl-box"><div class="hl-n">$0</div><div class="hl-l">First<br>consultation</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section>
+  <div class="stag">Client reviews</div>
+  <h2>What clients say</h2>
+  <div class="bar"></div>
+  <div class="rev-grid">
+    <div class="rc"><div class="rc-stars">★★★★★</div><div class="rc-q">"The level of detail in this itinerary was unlike anything I had seen before. Real transport costs, specific stops, which neighborhoods to avoid at night. I arrived feeling genuinely prepared."</div><div class="rc-by">— First client</div><div class="rc-p">Fiverr · Custom Travel Itinerary</div></div>
+    <div class="rc"><div class="rc-stars">★★★★★</div><div class="rc-q">"I had been putting off my European master's application for over a year. She delivered a complete, actionable roadmap in 48 hours — specific programs, deadlines, required documents. I finally began the process."</div><div class="rc-by">— Upwork client</div><div class="rc-p">Upwork · Study Abroad Consulting</div></div>
+    <div class="rc"><div class="rc-stars">★★★★★</div><div class="rc-q">"As a Colombian planning my first independent trip to the United States, I needed someone who understood my budget and where to start. Sary knew exactly what to prioritize and what to book first."</div><div class="rc-by">— Direct client, Colombia</div><div class="rc-p">Direct · USA Route Planning</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-bg" id="contact">
+  <h2>Ready to stop planning<br>and start going?</h2>
+  <p>Free 20-minute consultation — no commitment, no sales pitch.</p>
+  <p class="cta-email">sary.gonzalez19@gmail.com</p>
+  <div class="cta-btns">
+    <a href="https://www.fiverr.com/s/pdKWpYl" class="bw" target="_blank">Hire me on Fiverr</a>
+    <a href="https://www.upwork.com/freelancers/~0117ed65a8c23297cc?mp_source=share" class="bow" target="_blank">Find me on Upwork</a>
+    <a href="https://mail.google.com/mail/?view=cm&to=sary.gonzalez19@gmail.com" class="bow" target="_blank">Send an email</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Sary González · Travel Consultant · Barranquilla, Colombia</p>
+  <p>Available worldwide · English &amp; Spanish · sary.gonzalez19@gmail.com</p>
+</footer>
+
+<script>
+function toggle(card){
+  const wasOpen=card.classList.contains('open');
+  document.querySelectorAll('.tc').forEach(c=>c.classList.remove('open'));
+  if(!wasOpen)card.classList.add('open');
+}
+</script>
+</body>
+</html>
