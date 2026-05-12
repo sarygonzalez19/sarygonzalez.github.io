@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sary González — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #F7F3EC;
+  color: #1C1C1A;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+}
+.tag {
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #B85C38;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.tag::before { content: ''; width: 2rem; height: 1px; background: #B85C38; }
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+h1 em { font-style: italic; color: #B85C38; }
+.sub {
+  font-size: 0.92rem;
+  color: #7A7268;
+  margin-bottom: 3.5rem;
+  text-align: center;
+}
+.cards {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 780px;
+}
+.card {
+  flex: 1;
+  min-width: 280px;
+  background: #FDFAF5;
+  border: 1px solid #EDE6D8;
+  padding: 2.5rem 2rem;
+  text-decoration: none;
+  color: #1C1C1A;
+  transition: border-color 0.2s, background 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.card:hover { border-color: #B85C38; background: #EDE6D8; }
+.card-tag {
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #B85C38;
+}
+.card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+.card-desc {
+  font-size: 0.83rem;
+  color: #7A7268;
+  line-height: 1.7;
+}
+.card-arrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #B85C38;
+  margin-top: 0.5rem;
+}
+.divider {
+  width: 2.5rem;
+  height: 1px;
+  background: #EDE6D8;
+  margin: 3rem 0;
+}
+.email {
+  font-size: 0.78rem;
+  color: #A8A09A;
+  letter-spacing: 0.06em;
+}
+.email a { color: #B85C38; text-decoration: none; }
+</style>
+</head>
+<body>
+
+  <div class="tag">Independent Professional</div>
+  <h1>Sary González<br><em>Portfolio</em></h1>
+  <p class="sub">Select a portfolio to view</p>
+
+  <div class="cards">
+    <a class="card" href="portfolio_travel_consultant.html">
+      <div class="card-tag">Service 01</div>
+      <div class="card-title">Travel Consultant</div>
+      <div class="card-desc">Custom itineraries, study abroad planning, and budget travel consulting — built on 16 real destinations personally traveled.</div>
+      <div class="card-arrow">View portfolio →</div>
+    </a>
+    <a class="card" href="portfolio_copywriter.html">
+      <div class="card-tag">Service 02</div>
+      <div class="card-title">Copywriter</div>
+      <div class="card-desc">Bilingual copy in English and Spanish — landing pages, email sequences, ads, and brand voice. Fast delivery, human quality.</div>
+      <div class="card-arrow">View portfolio →</div>
+    </a>
+  </div>
+
+  <div class="divider"></div>
+  <p class="email">sary.gonzalez19@gmail.com &nbsp;·&nbsp; <a href="https://www.fiverr.com/s/pdKWpYl" target="_blank">Fiverr</a> &nbsp;·&nbsp; <a href="https://www.upwork.com/freelancers/~0117ed65a8c23297cc?mp_source=share" target="_blank">Upwork</a></p>
+
+</body>
+</html>
