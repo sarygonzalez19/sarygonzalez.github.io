@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sary — Copywriter & Digital Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Fraunces:ital,wght@0,200;0,300;1,200;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0D0D0F;
+  --bg2: #111114;
+  --surface: #18181C;
+  --card: #1E1E23;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --accent: #E8FF6B;
+  --accent2: #D4F055;
+  --white: #F5F5F0;
+  --muted: #7A7A85;
+  --light: #A0A0AE;
+  --coral: #FF6B4A;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--white); font-family: 'Space Grotesk', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 200;
+  padding: 1rem 3rem; display: flex; justify-content: space-between; align-items: center;
+  background: rgba(13,13,15,0.9); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 200; letter-spacing: 0.02em; }
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  background: var(--accent); color: var(--bg); padding: 0.55rem 1.4rem;
+  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+  font-weight: 500; text-decoration: none; transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--accent2); }
+
+/* HERO */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 4rem 5rem; padding-top: 100px;
+  position: relative; overflow: hidden;
+}
+.hero-bg-text {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  font-family: 'Fraunces', serif; font-size: 28vw; font-weight: 200;
+  color: rgba(255,255,255,0.015); white-space: nowrap;
+  pointer-events: none; user-select: none; letter-spacing: -0.04em;
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1fr auto; gap: 4rem;
+  align-items: flex-end; position: relative; z-index: 1;
+}
+.hero-left {}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  background: rgba(232,255,107,0.08); border: 1px solid rgba(232,255,107,0.2);
+  color: var(--accent); padding: 0.35rem 1rem;
+  font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+.hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+h1 {
+  font-family: 'Fraunces', serif; font-weight: 200;
+  font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 1.02;
+  letter-spacing: -0.02em; margin-bottom: 2rem;
+}
+h1 em { font-style: italic; color: var(--accent); }
+h1 s { text-decoration: line-through; color: var(--muted); text-decoration-color: var(--coral); }
+.hero-desc {
+  font-size: 1rem; line-height: 1.8; color: var(--muted);
+  max-width: 500px; margin-bottom: 3rem;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-accent { background: var(--accent); color: var(--bg); padding: 0.9rem 2rem; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; text-decoration: none; transition: background 0.2s; display: inline-block; }
+.btn-accent:hover { background: var(--accent2); }
+.btn-ghost { border: 1px solid var(--border2); color: var(--light); padding: 0.9rem 2rem; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; display: inline-block; }
+.btn-ghost:hover { border-color: var(--white); color: var(--white); }
+.hero-right { text-align: right; flex-shrink: 0; }
+.hero-metrics { display: flex; flex-direction: column; gap: 0.5rem; }
+.metric-pill {
+  display: flex; align-items: center; gap: 1rem; justify-content: flex-end;
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 0.9rem 1.25rem;
+}
+.metric-pill-n { font-family: 'Fraunces', serif; font-size: 1.4rem; color: var(--accent); font-weight: 200; }
+.metric-pill-l { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em; }
+.hero-line { border: none; border-top: 1px solid var(--border); margin: 3rem 0 0; }
+
+/* SERVICES */
+.services { padding: 7rem 4rem; }
+.s-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; }
+.stag { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+h2 { font-family: 'Fraunces', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 200; line-height: 1.15; }
+h2 em { font-style: italic; color: var(--accent); }
+.s-note { font-size: 0.82rem; color: var(--muted); max-width: 280px; text-align: right; line-height: 1.6; }
+
+.svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+.svc-card {
+  background: var(--bg2); padding: 2.5rem;
+  transition: background 0.2s; cursor: default;
+  position: relative; overflow: hidden;
+}
+.svc-card:hover { background: var(--surface); }
+.svc-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--accent); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s;
+}
+.svc-card:hover::after { transform: scaleX(1); }
+.svc-icon-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.75rem; }
+.svc-icon { width: 44px; height: 44px; background: rgba(232,255,107,0.08); border: 1px solid rgba(232,255,107,0.15); display: flex; align-items: center; justify-content: center; }
+.svc-icon svg { width: 18px; height: 18px; fill: var(--accent); }
+.svc-price-badge { font-family: 'Fraunces', serif; font-size: 1.3rem; color: var(--accent); font-weight: 200; }
+.svc-price-badge small { font-family: 'Space Grotesk', sans-serif; font-size: 0.65rem; color: var(--muted); font-weight: 300; display: block; text-align: right; margin-bottom: 0.1rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.svc-title { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 200; margin-bottom: 0.75rem; line-height: 1.25; }
+.svc-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.5rem; }
+.svc-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.svc-list li { font-size: 0.78rem; color: var(--light); display: flex; gap: 0.75rem; align-items: flex-start; }
+.svc-list li::before { content: '→'; color: var(--accent); flex-shrink: 0; font-size: 0.7rem; margin-top: 0.1rem; }
+
+/* WORK SAMPLES */
+.samples { background: var(--bg2); padding: 7rem 4rem; }
+.samples-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 3rem; }
+.s-tab {
+  padding: 0.75rem 1.5rem; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent;
+  transition: all 0.2s; background: none; border-top: none; border-left: none; border-right: none;
+}
+.s-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.s-tab:hover:not(.active) { color: var(--white); }
+.sample-panel { display: none; }
+.sample-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.sample-box {
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 2rem; position: relative; overflow: hidden;
+}
+.sample-label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
+.sample-title { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 200; color: var(--white); margin-bottom: 1.25rem; line-height: 1.3; }
+.sample-body { font-size: 0.83rem; line-height: 1.8; color: var(--muted); }
+.sample-body p { margin-bottom: 0.75rem; }
+.sample-body strong { color: var(--light); font-weight: 500; }
+.sample-body .hook { font-family: 'Fraunces', serif; font-style: italic; font-size: 1rem; color: var(--white); font-weight: 200; line-height: 1.5; margin-bottom: 1rem; }
+.sample-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
+.sample-kpi { font-family: 'Fraunces', serif; font-size: 1.5rem; color: var(--accent); font-weight: 200; }
+.sample-kpi-l { font-size: 0.68rem; color: var(--muted); }
+.sample-type-badge { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(232,255,107,0.06); border: 1px solid rgba(232,255,107,0.12); color: var(--accent); padding: 0.25rem 0.7rem; }
+
+/* BEFORE/AFTER */
+.bafter { padding: 7rem 4rem; }
+.ba-grid { display: flex; flex-direction: column; gap: 2px; margin-top: 3.5rem; }
+.ba-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.ba-label-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 2px; }
+.ba-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.6rem 1.25rem; }
+.ba-label.before { background: rgba(255,107,74,0.08); color: var(--coral); border: 1px solid rgba(255,107,74,0.15); }
+.ba-label.after { background: rgba(232,255,107,0.08); color: var(--accent); border: 1px solid rgba(232,255,107,0.15); }
+.ba-box { padding: 1.75rem; font-size: 0.85rem; line-height: 1.75; }
+.ba-box.before { background: var(--surface); color: var(--muted); border: 1px solid var(--border); }
+.ba-box.after { background: rgba(232,255,107,0.04); color: var(--light); border: 1px solid rgba(232,255,107,0.1); }
+.ba-context { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 3.5rem; padding-top: 0.75rem; }
+
+/* TOOLS */
+.tools { background: var(--surface); padding: 5rem 4rem; }
+.tools-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.5rem; }
+.tool-pill {
+  border: 1px solid var(--border2); color: var(--light); padding: 0.5rem 1.25rem;
+  font-size: 0.78rem; letter-spacing: 0.06em; transition: all 0.2s;
+}
+.tool-pill:hover { border-color: var(--accent); color: var(--accent); }
+.tool-pill.core { border-color: rgba(232,255,107,0.25); color: var(--accent); background: rgba(232,255,107,0.05); }
+
+/* ABOUT */
+.about { padding: 7rem 4rem; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.about-text .stag { margin-bottom: 0.75rem; }
+.about-text p { font-size: 0.92rem; line-height: 1.85; color: var(--muted); margin-bottom: 1.25rem; }
+.about-text p strong { color: var(--white); font-weight: 400; }
+.exp-list { margin-top: 2.5rem; display: flex; flex-direction: column; }
+.exp-row { display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.25rem 0; border-bottom: 1px solid var(--border); }
+.exp-year { font-size: 0.68rem; color: var(--accent); letter-spacing: 0.1em; min-width: 80px; padding-top: 0.2rem; }
+.exp-content {}
+.exp-title { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.2rem; }
+.exp-sub { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+.about-numbers { }
+.num-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+.num-box { background: var(--bg2); padding: 2.25rem; }
+.num-n { font-family: 'Fraunces', serif; font-size: 3.5rem; color: var(--accent); font-weight: 200; line-height: 1; }
+.num-l { font-size: 0.7rem; color: var(--muted); margin-top: 0.5rem; line-height: 1.5; text-transform: uppercase; letter-spacing: 0.06em; }
+.process-strip { margin-top: 1.5rem; background: var(--surface); border: 1px solid var(--border); padding: 1.5rem; }
+.process-strip-title { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+.ps-steps { display: flex; flex-direction: column; gap: 0.5rem; }
+.ps-step { font-size: 0.78rem; color: var(--muted); display: flex; gap: 0.75rem; }
+.ps-step span { color: var(--accent); font-weight: 500; min-width: 20px; }
+
+/* REVIEWS */
+.reviews { background: var(--bg2); padding: 7rem 4rem; }
+.rev-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+.rev-card { border: 1px solid var(--border); padding: 2rem; position: relative; transition: border-color 0.2s; }
+.rev-card:hover { border-color: rgba(232,255,107,0.2); }
+.rev-stars { color: var(--accent); font-size: 0.7rem; letter-spacing: 0.1em; margin-bottom: 1.25rem; }
+.rev-text { font-family: 'Fraunces', serif; font-size: 1rem; font-style: italic; font-weight: 200; line-height: 1.7; color: var(--white); margin-bottom: 1.5rem; }
+.rev-by { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+.rev-platform { font-size: 0.65rem; color: var(--accent); margin-top: 0.25rem; }
+
+/* CTA */
+.cta { padding: 7rem 4rem; text-align: center; position: relative; }
+.cta::before {
+  content: '';
+  position: absolute; inset: 2rem; border: 1px solid var(--border);
+  pointer-events: none;
+}
+.cta h2 { font-family: 'Fraunces', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 200; line-height: 1.1; margin-bottom: 1rem; }
+.cta h2 em { font-style: italic; color: var(--accent); }
+.cta p { font-size: 0.95rem; color: var(--muted); margin-bottom: 3rem; }
+.cta-row { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+footer { background: var(--surface); border-top: 1px solid var(--border); padding: 1.75rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+footer p { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.06em; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Sary<span>.</span>copy</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#samples">Work</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-text">COPY</div>
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-tag">Bilingual Copywriter · English & Spanish · Fast Delivery</div>
+      <h1>Words that sell.<br><s>Fluff</s> that doesn't<br>make the <em>cut.</em></h1>
+      <p class="hero-desc">
+        I'm a Colombian copywriter with 4+ years in digital marketing who writes copy that moves people — fast, precise, and built around your brand's voice. I write in both English and Spanish for businesses, brands, and creators across any market.
+      </p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-accent">See services & pricing</a>
+        <a href="#samples" class="btn-ghost">Read my copy samples</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-metrics">
+        <div class="metric-pill">
+          <div class="metric-pill-l">Avg. turnaround</div>
+          <div class="metric-pill-n">48h</div>
+        </div>
+        <div class="metric-pill">
+          <div class="metric-pill-l">Revisions included</div>
+          <div class="metric-pill-n">2×</div>
+        </div>
+        <div class="metric-pill">
+          <div class="metric-pill-l">Languages</div>
+          <div class="metric-pill-n">ES / EN</div>
+        </div>
+        <div class="metric-pill">
+          <div class="metric-pill-l">Mktg. experience</div>
+          <div class="metric-pill-n">4+ yrs</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="hero-line">
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="s-header">
+    <div>
+      <div class="stag">What I offer</div>
+      <h2>Copy that converts.<br><em>For brands that matter.</em></h2>
+    </div>
+    <div class="s-note">All services available in English and Spanish. Fast turnaround, human-written quality.</div>
+  </div>
+  <div class="svc-grid">
+
+    <div class="svc-card">
+      <div class="svc-icon-row">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+        </div>
+        <div class="svc-price-badge">
+          <small>Starting at</small>
+          $30 USD
+        </div>
+      </div>
+      <div class="svc-title">Landing Page Copywriting</div>
+      <div class="svc-desc">Full-page copy designed to convert visitors into buyers or leads. Structured with proven frameworks (PAS, AIDA, StoryBrand) and adapted to your brand voice.</div>
+      <ul class="svc-list">
+        <li>Hero section, features, benefits & CTA</li>
+        <li>Up to 800 words of optimized copy</li>
+        <li>Headline variations (A/B testing ready)</li>
+        <li>2 revisions included</li>
+      </ul>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-icon-row">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <div class="svc-price-badge">
+          <small>Starting at</small>
+          $45 USD
+        </div>
+      </div>
+      <div class="svc-title">Email Sequence Copywriting</div>
+      <div class="svc-desc">Welcome flows, nurture sequences, sales campaigns, and re-engagement series. Each email designed to be opened, read, and acted on.</div>
+      <ul class="svc-list">
+        <li>3 to 7-email sequences</li>
+        <li>Subject lines + preview text included</li>
+        <li>Structured for open rates & clicks</li>
+        <li>Compatible with any ESP</li>
+      </ul>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-icon-row">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </div>
+        <div class="svc-price-badge">
+          <small>Starting at</small>
+          $25 USD
+        </div>
+      </div>
+      <div class="svc-title">Social Media & Ad Copywriting</div>
+      <div class="svc-desc">Scroll-stopping captions, Instagram bios, Facebook and Meta ad copy, and Google ad headlines. Designed for your specific platform and audience.</div>
+      <ul class="svc-list">
+        <li>3–5 ad variations per deliverable</li>
+        <li>Hook + body + CTA structure</li>
+        <li>Meta Ads and Google Ads formats</li>
+        <li>Hashtag strategy included</li>
+      </ul>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-icon-row">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+        </div>
+        <div class="svc-price-badge">
+          <small>Starting at</small>
+          $40 USD
+        </div>
+      </div>
+      <div class="svc-title">Brand Voice & Content Strategy</div>
+      <div class="svc-desc">For brands that need more than one-off copy — a full content strategy with tone of voice guide, content pillars, and a monthly editorial calendar.</div>
+      <ul class="svc-list">
+        <li>Brand voice & tone guide (PDF)</li>
+        <li>3 content pillars defined</li>
+        <li>30-day content calendar</li>
+        <li>Templates for recurring formats</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- COPY SAMPLES -->
+<section class="samples" id="samples">
+  <div class="s-header" style="margin-bottom:2rem;">
+    <div>
+      <div class="stag">Portfolio</div>
+      <h2>Read the actual copy.<br><em>Then decide.</em></h2>
+    </div>
+  </div>
+  <div class="samples-tabs">
+    <button class="s-tab active" onclick="showTab('email',this)">Email Copy</button>
+    <button class="s-tab" onclick="showTab('landing',this)">Landing Page</button>
+    <button class="s-tab" onclick="showTab('social',this)">Social & Ads</button>
+  </div>
+  <div id="tab-email" class="sample-panel active">
+    <div class="sample-box">
+      <div class="sample-label">Email 1 of 5 — Welcome Sequence</div>
+      <div class="sample-title">Subject: Bienvenida — y lo que pasa ahora</div>
+      <div class="sample-body">
+        <p class="hook">"Ya eres parte de algo diferente."</p>
+        <p>Hola [Nombre],</p>
+        <p>La mayoría de la gente pasa años pensando en empezar algo y nunca da el primer paso.</p>
+        <p>Tú lo diste.</p>
+        <p>En los próximos 5 días te voy a compartir las herramientas y estrategias que le tomaron a mi negocio pasar de cero a sus primeros <strong>$1,000 en 30 días</strong> — sin anuncios pagados, sin inversión inicial.</p>
+        <p>Pero primero: una sola pregunta. ¿Cuál es tu mayor reto ahora mismo? Responde este email — lo leo personalmente.</p>
+        <p>Nos vemos mañana.</p>
+      </div>
+      <div class="sample-foot">
+        <div>
+          <div class="sample-kpi">42%</div>
+          <div class="sample-kpi-l">Open rate benchmark for welcome emails</div>
+        </div>
+        <div class="sample-type-badge">Welcome Flow</div>
+      </div>
+    </div>
+    <div class="sample-box">
+      <div class="sample-label">Re-engagement Email</div>
+      <div class="sample-title">Subject: ¿Sigues ahí? (sin presión)</div>
+      <div class="sample-body">
+        <p class="hook">"Hace un tiempo que no nos comunicamos."</p>
+        <p>No sé qué pasó — tal vez la vida se puso ocupada, o los emails se perdieron en el spam.</p>
+        <p>Todo bien.</p>
+        <p>Pero si todavía estás buscando <strong>[resultado del cliente]</strong>, tengo algo nuevo que podría cambiar tu perspectiva.</p>
+        <p>Son 3 minutos. Es gratis. Y si no te interesa, te puedes dar de baja con un clic — sin drama.</p>
+        <p><strong>[Ver lo que tengo para ti →]</strong></p>
+      </div>
+      <div class="sample-foot">
+        <div>
+          <div class="sample-kpi">18%</div>
+          <div class="sample-kpi-l">Industry avg. re-engagement rate</div>
+        </div>
+        <div class="sample-type-badge">Re-engagement</div>
+      </div>
+    </div>
+  </div>
+  <div id="tab-landing" class="sample-panel">
+    <div class="sample-box">
+      <div class="sample-label">Hero Section — Fitness Coach, Colombia</div>
+      <div class="sample-title">¿Cansada de planes de dieta que prometen todo y entregan nada?</div>
+      <div class="sample-body">
+        <p class="hook">"Este programa de 8 semanas fue diseñado para mujeres que ya lo intentaron todo."</p>
+        <p>No más rutinas genéricas de YouTube. No más contar calorías sin entender por qué. No más empezar el lunes y abandonar el miércoles.</p>
+        <p>Este programa funciona porque no te da un plan — <strong>te da un sistema.</strong></p>
+        <p>Un sistema basado en tu cuerpo, tu horario, y tu historia. No en el de otra persona.</p>
+        <p><strong>[Quiero mi plan personalizado →]</strong></p>
+      </div>
+      <div class="sample-foot">
+        <div>
+          <div class="sample-kpi">PAS</div>
+          <div class="sample-kpi-l">Problem → Agitation → Solution framework</div>
+        </div>
+        <div class="sample-type-badge">Landing Page Hero</div>
+      </div>
+    </div>
+    <div class="sample-box">
+      <div class="sample-label">Features Section — Travel Service</div>
+      <div class="sample-title">No te mando una lista de "top 10 lugares."</div>
+      <div class="sample-body">
+        <p class="hook">"Te entrego un documento vivo — listo para usar desde el momento en que aterrizas."</p>
+        <p>→ <strong>Día por día, hora por hora</strong> cuando importa<br>
+        → <strong>Presupuesto real desglosado:</strong> transporte, comida, alojamiento<br>
+        → Qué reservar con anticipación vs. qué conseguir allá<br>
+        → <strong>Plan B</strong> para imprevistos — porque siempre hay algo</p>
+        <p>Todo basado en experiencia propia. No en blogs de 2019.</p>
+      </div>
+      <div class="sample-foot">
+        <div>
+          <div class="sample-kpi">↑87%</div>
+          <div class="sample-kpi-l">Conversion lift with specific benefit copy</div>
+        </div>
+        <div class="sample-type-badge">Features Section</div>
+      </div>
+    </div>
+  </div>
+  <div id="tab-social" class="sample-panel">
+    <div class="sample-box">
+      <div class="sample-label">Facebook / Instagram Ad — Travel Niche</div>
+      <div class="sample-title">Hook + Body + CTA — Meta Ads Format</div>
+      <div class="sample-body">
+        <p class="hook">"Una colombiana vivió 6 meses en Alemania con una beca del 100%. Aquí el proceso."</p>
+        <p><strong>[BODY]</strong><br>No tenía contactos en Europa. No hablaba alemán. Empezó desde Barranquilla.</p>
+        <p>Lo que sí tenía: un mapa claro de a qué programas aplicar, cuándo, y qué documentos preparar meses antes.</p>
+        <p>Si estás pensando en hacer tu maestría en Europa, te creé una guía gratuita con los 7 pasos que yo seguí.</p>
+        <p><strong>[CTA] → Descargar gratis</strong></p>
+      </div>
+      <div class="sample-foot">
+        <div>
+          <div class="sample-kpi">CTR+</div>
+          <div class="sample-kpi-l">Optimized for Meta Ads engagement</div>
+        </div>
+        <div class="sample-type-badge">Meta Ads</div>
+      </div>
+    </div>
+    <div class="sample-box">
+      <div class="sample-label">Instagram Caption — Personal Brand</div>
+      <div class="sample-title">Hook-driven carousel caption</div>
+      <div class="sample-body">
+        <p class="hook">"Dejé mi trabajo de banco con $10k ahorrados y 0 clientes. Esto fue lo primero que hice."</p>
+        <p>No te voy a vender el cuento de que fue fácil.</p>
+        <p>El primer mes fue una mezcla de miedo, aprendizaje real, y algunos días de no saber qué hacer primero.</p>
+        <p>Pero también fue el mes en que más crecí profesionalmente en toda mi vida.</p>
+        <p>En este carrusel te cuento los 5 pasos concretos que tomé en esas primeras 4 semanas ↓</p>
+        <p>Guarda este post si estás pensando en hacer algo parecido.</p>
+        <p><strong>#emprendimiento #ingresosonline #freelancer #colombia</strong></p>
+      </div>
+      <div class="sample-foot">
+        <div>
+          <div class="sample-kpi">Save+</div>
+          <div class="sample-kpi-l">Optimized for saves & shares over likes</div>
+        </div>
+        <div class="sample-type-badge">Instagram Caption</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="bafter">
+  <div class="stag">Before / After</div>
+  <h2>What a rewrite actually does.</h2>
+  <div class="ba-grid">
+    <div class="ba-label-row">
+      <div class="ba-label before">✕ Before — Generic</div>
+      <div class="ba-label after">✓ After — Converted</div>
+    </div>
+    <div class="ba-row">
+      <div class="ba-box before">"Somos una empresa comprometida con la excelencia y la calidad en todos nuestros productos y servicios. Contáctenos hoy para más información."</div>
+      <div class="ba-box after">"¿Cuántas veces buscaste algo bueno y encontraste lo mismo de siempre? Aquí es diferente. Y si no te convence en los primeros 5 minutos, te devolvemos tu tiempo."</div>
+    </div>
+    <div class="ba-context">Example: Hero section for an e-commerce brand in Colombia. Same product. Different words. Different result.</div>
+    <div class="ba-label-row">
+      <div class="ba-label before">✕ Before — Email subject line</div>
+      <div class="ba-label after">✓ After — Rewritten</div>
+    </div>
+    <div class="ba-row">
+      <div class="ba-box before">"Boletín de noticias de nuestra empresa — Edición de mayo"</div>
+      <div class="ba-box after">"Esto que aprendí este mes me va a cambiar el negocio (y a ti también)"</div>
+    </div>
+    <div class="ba-context">Same newsletter. One open rate of 8%. The other? 34%. The only difference: the subject line.</div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="tools">
+  <div class="stag">Stack & Tools</div>
+  <h2>What I work with</h2>
+  <div class="tools-grid">
+    <span class="tool-pill core">Claude AI</span>
+    <span class="tool-pill core">ChatGPT</span>
+    <span class="tool-pill core">Google Analytics</span>
+    <span class="tool-pill">Notion</span>
+    <span class="tool-pill">Canva</span>
+    <span class="tool-pill">Mailchimp</span>
+    <span class="tool-pill">Mailerlite</span>
+    <span class="tool-pill">ConvertKit</span>
+    <span class="tool-pill">Meta Ads Manager</span>
+    <span class="tool-pill">Google Ads</span>
+    <span class="tool-pill">Trello</span>
+    <span class="tool-pill">Slack</span>
+    <span class="tool-pill">Google Workspace</span>
+    <span class="tool-pill">Excel / Sheets</span>
+    <span class="tool-pill">WordPress</span>
+    <span class="tool-pill">Fiverr</span>
+    <span class="tool-pill">Upwork</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="stag">About me</div>
+      <h2>Marketing brain.<br><em>Writer's instinct.</em></h2>
+      <br>
+      <p>I'm Sary — a Colombian copywriter with <strong>4+ years in digital marketing and data analysis</strong> at Serfinanza Bank, one of Colombia's financial institutions. I know what moves numbers, what moves people, and the difference between the two.</p>
+      <p>My process is fast and structured — I research your audience, study your brand voice, and write copy that sounds like you at your best. The result: <strong>professional-quality copy delivered in 48 hours</strong>, not 2 weeks.</p>
+      <p>I write in both <strong>English and Spanish</strong> — adapting tone, voice, and structure to each language naturally, not through translation. Whether your audience is in the U.S., Latin America, Europe, or anywhere in between, the copy lands the way it's meant to.</p>
+      <div class="exp-list">
+        <div class="exp-row">
+          <div class="exp-year">2022–2025</div>
+          <div class="exp-content">
+            <div class="exp-title">Digital Innovation & Operations Analyst</div>
+            <div class="exp-sub">Serfinanza Bank · Google Analytics, campaign management, data analysis, Excel</div>
+          </div>
+        </div>
+        <div class="exp-row">
+          <div class="exp-year">2021–2024</div>
+          <div class="exp-content">
+            <div class="exp-title">Social Media Lead</div>
+            <div class="exp-sub">Fundación BJ Amor y Pasión · Content strategy, community management, social campaigns</div>
+          </div>
+        </div>
+        <div class="exp-row">
+          <div class="exp-year">2026</div>
+          <div class="exp-content">
+            <div class="exp-title">Freelance Copywriter — English & Spanish</div>
+            <div class="exp-sub">Fiverr, Upwork, direct clients · English & Spanish · Bilingual copywriter</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-numbers">
+      <div class="num-grid">
+        <div class="num-box">
+          <div class="num-n">4+</div>
+          <div class="num-l">Years in digital marketing</div>
+        </div>
+        <div class="num-box">
+          <div class="num-n">48h</div>
+          <div class="num-l">Average delivery</div>
+        </div>
+        <div class="num-box">
+          <div class="num-n">2×</div>
+          <div class="num-l">Revisions included</div>
+        </div>
+        <div class="num-box">
+          <div class="num-n">ES</div>
+          <div class="num-l">Bilingual — English & Spanish</div>
+        </div>
+      </div>
+      <div class="process-strip">
+        <div class="process-strip-title">My copy process</div>
+        <div class="ps-steps">
+          <div class="ps-step"><span>01</span>Brief & brand voice intake</div>
+          <div class="ps-step"><span>02</span>Research audience pain points</div>
+          <div class="ps-step"><span>03</span>Write first draft with speed and structure</div>
+          <div class="ps-step"><span>04</span>Human rewrite for voice & conversion</div>
+          <div class="ps-step"><span>05</span>Deliver + 2 revision rounds</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+  <div class="stag">Testimonials</div>
+  <h2>What clients say</h2>
+  <div class="rev-grid">
+    <div class="rev-card">
+      <div class="rev-stars">★★★★★</div>
+      <div class="rev-text">"She completely rewrote our landing page and the conversion rate jumped. The copy felt human, specific, and exactly on-brand. I'll hire her again."</div>
+      <div class="rev-by">— First Upwork client</div>
+      <div class="rev-platform">Upwork · Landing Page Copy</div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-stars">★★★★★</div>
+      <div class="rev-text">"I needed email sequences for my digital product launch and she delivered in 36 hours. The open rates on week 1 were 40%+. Absolutely worth it."</div>
+      <div class="rev-by">— Fiverr client</div>
+      <div class="rc-p">Fiverr · Email Sequence — English</div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-stars">★★★★★</div>
+      <div class="rev-text">"The ad copy she wrote for our Meta campaign actually stopped the scroll. Our cost per click dropped by 35% compared to what we were running before."</div>
+      <div class="rev-by">— Direct client, Bogotá</div>
+      <div class="rev-platform">Direct · Meta Ads Copywriting</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <h2>Ready for copy that<br><em>actually works?</em></h2>
+  <p>Start with a free brief review — no commitment required.</p>
+  <div class="cta-row">
+    <a href="https://www.fiverr.com/s/pdKWpYl" class="btn-accent" target="_blank">Hire me on Fiverr</a>
+    <a href="https://www.upwork.com/freelancers/~0117ed65a8c23297cc?mp_source=share" class="btn-ghost" target="_blank">Find me on Upwork</a>
+    <a href="https://mail.google.com/mail/?view=cm&to=sary.gonzalez19@gmail.com" class="btn-ghost" target="_blank">Send an email</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Sary · Copywriter & Digital Services · Barranquilla, Colombia</p>
+  <p>Available for freelance worldwide · English & Spanish · sary.gonzalez19@gmail.com</p>
+</footer>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.sample-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.s-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
